@@ -14,7 +14,7 @@ imageGallery.images.addEventListener('click', (event) => {
     const modal = basicLightbox.create(`
     <img src="${event.target.dataset.source}" >`)
 
-    modal.show({onClose: onEscPress(modal)});
+    modal.show({onShow: onEscPress(modal), onClose: onCloseModal(modal)});
 });
 
 function createListOfImages (items) {
@@ -35,4 +35,10 @@ function onEscPress(modal){
     window.addEventListener('keydown', function (e) {
         if(e.code === "Escape") modal.close();
     });
+}
+
+function onCloseModal(modal){
+  window.removeEventListener('keydown', function (e) {
+      if(e.code === "Escape") modal.close();
+  });
 }
