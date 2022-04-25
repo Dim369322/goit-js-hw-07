@@ -14,9 +14,7 @@ imageGallery.images.addEventListener('click', (event) => {
     const modal = basicLightbox.create(`
     <img src="${event.target.dataset.source}" >`)
 
-    modal.show();
-
-    onEscPress(modal);
+    modal.show({onClose: onEscPress(modal)});
 });
 
 function createListOfImages (items) {
