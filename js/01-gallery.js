@@ -12,9 +12,13 @@ imageGallery.images.addEventListener('click', (event) => {
         return;
     }
     const modal = basicLightbox.create(`
-    <img src="${event.target.dataset.source}" >`)
-
-    modal.show({onShow: onEscPress(modal), onClose: onCloseModal(modal)});
+    <img src="${event.target.dataset.source}" >`,{
+        onShow: onEscPress,
+      },
+      { 
+        onClose: onCloseModal
+      });
+      modal.show();
 });
 
 function createListOfImages (items) {
